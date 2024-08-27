@@ -25,7 +25,7 @@
         </div>
         
         <div class="col-12">
-            <button class="btn btn-success me-md-2" type="submit" @click="edit_user()">Submit edit</button>
+            <button class="btn btn-success me-md-2" type="submit" @click="edit_user()">Submit Edit</button>
             <a class="btn btn-danger" href="/" role="button">Back to Home</a>
         </div>
 
@@ -50,6 +50,8 @@ const fetch_single_user = async () => {
     await axios.get(`${import.meta.env.VITE_API}/users/${route.params.id}`)
     .then((response) => {
         user.value.name = response.data.data[0].name
+        user.value.address = response.data.data[0].address
+        user.value.score = response.data.data[0].score
     }).catch((err) => {
         console.log(err)
     })
